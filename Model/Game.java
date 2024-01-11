@@ -63,7 +63,6 @@ public class Game {
             }
 
             board[row][col] = currentPlayer;
-            switchPlayer(); // Cambiar al siguiente jugador
             return true;
         }
 

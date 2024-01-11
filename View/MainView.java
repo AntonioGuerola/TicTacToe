@@ -3,33 +3,37 @@ package View;
 import java.util.Scanner;
 
 import Model.Game;
+import UI.UI;
 
 public class MainView {
     private static Scanner scanner;
-    private static Game game;
+    private static Game game = new Game();
 
-    public void View(Game game) {
-        scanner = new Scanner(System.in);
+    public MainView(Game game) {
+        this.scanner = new Scanner(System.in);
         this.game = game;
     }
 
-    public static void startGame() {
+    public void View(Game game) {
+
+    }
+
+    public static void startGame(Game game) {
         boolean gameInProgress = true;
 
         while (gameInProgress) {
             displayBoard();
             System.out.println("Player " + game.getCurrentPlayer() + "'s turn");
-            System.out.print("Enter row and column (e.g., 1 2): ");
-            int row = scanner.nextInt();
-            int col = scanner.nextInt();
+            int row = UI.readInt("Enter row");
+            int col = UI.readInt("Enter col");
 
             if (game.makeMove(row, col)) {
-                if (game.isGameOver()) {
+                if (!game.isGameOver()) {
+                    game.switchPlayer();
+                } else {
                     displayBoard();
                     System.out.println("Player " + game.getCurrentPlayer() + " wins!");
                     gameInProgress = false;
-                } else {
-                    game.switchPlayer();
                 }
             } else {
                 System.out.println("Invalid move. Try again.");
@@ -50,5 +54,4 @@ public class MainView {
             System.out.println("-------------");
         }
     }
-
 }
