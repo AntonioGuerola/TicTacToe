@@ -14,10 +14,10 @@ public class MainView {
         this.game = game;
     }
 
-    public void View(Game game) {
-
+    public static void welcome(){
+        System.out.println("Welcome to this fantastic Tic Tac Toe game:");
+        UI.pressEnter();
     }
-
     public static void startGame(Game game) {
         boolean gameInProgress = true;
 
@@ -43,7 +43,6 @@ public class MainView {
     }
 
     private static void displayBoard() {
-        // Lógica para mostrar el tablero en consola
         System.out.println("-------------");
 
         for (int i = 0; i < 3; i++) {

@@ -1,7 +1,5 @@
 package UI;
 
-import Model.Player;
-
 import java.util.Scanner;
 
 public class UI {
@@ -12,16 +10,21 @@ public class UI {
         do {
             try {
                 numEleccion = teclado.nextInt();
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("You must introduce a number. Try again.");
                 teclado.nextLine();
             }
-            if (numEleccion < 0 || numEleccion > 2){
+            if (numEleccion < 0 || numEleccion > 2) {
                 System.out.println("You must introduce a number between 0 and 2.");
             }
 
-        } while(numEleccion < 0 || numEleccion > 2);
+        } while (numEleccion < 0 || numEleccion > 2);
         return numEleccion;
+    }
+    public static void pressEnter() {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Press intro to continue.");
+        teclado.nextLine();
     }
 }
 
